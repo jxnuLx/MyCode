@@ -9,5 +9,7 @@ public class TEst {
         String s2 = scanner.next();
         System.out.println(s1);
         System.out.println(s2);
+
+
     }
 }

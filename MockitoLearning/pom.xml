@@ -43,6 +43,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.mockito</groupId>
+                    <artifactId>mockito-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- spring-boot-starter-test 中不包含junit4，需要单独引入-->
         <dependency>
@@ -60,6 +66,15 @@
         <!--            <groupId>org.mockito</groupId>-->
         <!--            <artifactId>mockito-junit-jupiter</artifactId>-->
         <!--        </dependency>-->
+
+        <!--
+        该依赖是构建mockito静态方法的，包含了mockito-core依赖,这两个不能同时依赖，不然的话会出问题
+        -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-inline</artifactId>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -78,11 +93,7 @@
             <version>3.5.3.1</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.16.10</version>
-        </dependency>
+
 
         <dependency>
             <groupId>cn.hutool</groupId>

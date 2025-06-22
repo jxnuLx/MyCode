@@ -47,8 +47,9 @@ public class DemoTest {
         //使用try-with -resource来进行资源的关闭,不关闭的同时执行两个静态打桩方法会报错
         try(MockedStatic<StaticUtils> demo = Mockito.mockStatic(StaticUtils.class)){
             demo.when(() -> StaticUtils.range(2,6)).thenReturn(Arrays.asList(10,11,12));
+            Assertions.assertTrue(StaticUtils.range(2,6).contains(10));
         }
-        Assertions.assertTrue(StaticUtils.range(2,6).contains(10));
+
     }
 
 }
