@@ -11,6 +11,10 @@
     <modules>
         <module>MockitoLearning</module>
         <module>ProxyLearning</module>
+        <module>SpringLearning</module>
+        <module>springAnnotationLearning</module>
+        <module>spring_mybatis</module>
+        <module>spring_aop</module>
     </modules>
 
     <parent>

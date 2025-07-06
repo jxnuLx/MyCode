@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+bean标签标示配置bean
+id属性标示给bean起名字
+class属性表示给bean定义类型，
+name 表示起的别名 可以起多个 用分号分隔
+scope 控制是否是单例
+得是具体的实现类而不是接口，要靠这个造对象的
+
+bena在创建对象的时候，使用的是默认的无参数构造方法，不管是public还是private
+-->
+    <bean id="bookDao" class="com.xl.dao.impl.BookDaoImpl" init-method="init" destroy-method="destroy"/>
+    <bean id="bookService" name="bookService2" class="com.xl.service.impl.BookServiceImpl" scope="singleton">
+        <!--配置server与dao的关系-->
+        <!--
+            property标签表示配置当前bean的属性
+            name属性表示配置哪一个具体的属性(这里是配置bookService的bookDao属性)
+            ref属性表示参照哪一个bean(参照当前配置文件中的bookDao)
+
+            必须得在BookServiceImpl类中建立setBookDao方法
+        -->
+        <property name="bookDao" ref="bookDao"></property>
+    </bean>
+    <!--druid连接池自带mysql的驱动-->
+<!--    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">-->
+<!--        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>-->
+<!--    </bean>-->
+
+    <!-- 方式二、静态工厂来创建对象  默认也是单例的-->
+<!--    <bean id="bookDao" class="com.xl.factory.BookDaoFactory" factory-method="getBookDaoImpl" />-->
+    <!-- 方式三、实例工厂来创建对象  默认也是单例的-->
+<!--    <bean id="bookDaoFactory" class="com.xl.factory.BookDaoFactory1"/>-->
+<!--    <bean id="bookDao" factory-bean="bookDaoFactory" factory-method="getBookDaoImpl"/>-->
+
+    <!-- 方式四、使用FactoryBean实例化bean-->
+<!--    <bean id="bookDao" class="com.xl.factory.BookDaoFactoryBean"/>-->
+</beans>
