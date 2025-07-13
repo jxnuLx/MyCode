@@ -29,4 +29,9 @@ public class AccountServiceTest {
         List<Account> accounts = accountService.findAll();
         System.out.println(accounts);
     }
+
+    @Test
+    public void testTransfer() {
+        accountService.transfer("Tom", "Jerry", 100D);
+    }
 }

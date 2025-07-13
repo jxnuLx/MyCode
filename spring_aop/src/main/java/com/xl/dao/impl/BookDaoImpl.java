@@ -15,4 +15,10 @@ public class BookDaoImpl implements BookDao {
     public void update() {
         System.out.println("book dao update ...");
     }
+
+    @Override
+    public int select() {
+        System.out.println("book dao select ...");
+        return 100;
+    }
 }
