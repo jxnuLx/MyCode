@@ -22,6 +22,8 @@ public class ServletContainerInitConfig extends AbstractDispatcherServletInitial
 
     //加载Spring容器配置
     protected WebApplicationContext createRootApplicationContext() {
-        return null;
+        AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
+        context.register(SpringConfig.class);
+        return context;
     }
 }
