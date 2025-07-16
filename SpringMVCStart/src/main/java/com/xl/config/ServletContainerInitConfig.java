@@ -2,7 +2,10 @@ package com.xl.config;
 
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
+
+import javax.servlet.Filter;
 
 
 //web3.0规范之后，不用web.xml来做，用配置类来做
@@ -25,5 +28,14 @@ public class ServletContainerInitConfig extends AbstractDispatcherServletInitial
         AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
         context.register(SpringConfig.class);
         return context;
+    }
+
+    //乱码处理
+
+    @Override
+    protected Filter[] getServletFilters() {
+        CharacterEncodingFilter characterEncodingFilter =new CharacterEncodingFilter();
+        characterEncodingFilter.setEncoding("UTF-8");
+        return new Filter[]{characterEncodingFilter};
     }
 }
