@@ -1,0 +1,44 @@
+## 开发环境
+## 开发环境
+spring:
+  config:
+    activate:
+      on-profile: dev ## 给开发环境取的名
+server:
+  port: 80
+---
+## 生产环境
+spring:
+  profiles: pro ## 给生产环境取的名
+server:
+  port: 81
+---
+## 测试环境
+spring:
+  profiles: test ## 给测试环境起的名
+server:
+  port: 82
+---
+
+## 设置启用的环境
+spring:
+  profiles:
+    active: ${profile.active}  ## 表示使用的是maven的配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springlearning?useSSL=false   #在springbbot2。4.2要加上serverTimezone=UTC
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+
+lesson: spring
+
+enterprise:
+  name: Helsing
+  age: 16
+  tel: 400-957-241
+  subject:
+    - Java
+    - Python
+    - C#
+
